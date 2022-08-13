@@ -6,6 +6,15 @@ import tkinter as tk
 def du_close():
     root.destroy()
 
+def popup_window():
+    window=tk.Toplevel()
+    window.geometry("280x300")
+    window.title("A/B результат")
+    
+    # Добавление кнопки закрытия окна
+    btnClosePopup = tk.Button(window, text="Закрыть", font = ('Helvetica', 10, 'bold'),command=window.destroy)
+    btnClosePopup.place(x=160, y=250, width=90, height=30)
+
 # Создание главного окна
 root = tk.Tk()
 root.geometry("280x300")
@@ -50,7 +59,7 @@ entVisitors1 = tk.Entry(font = ('Helvetika', 10, 'bold'))
 entVisitors1.place(x=115, y=205, width=90, height=20)
 
 # Добавление кнопки "Расчитать"
-btnProcess = tk.Button(root, text="Расчитать", font = ('Helvetika', 10, 'bold'))
+btnProcess = tk.Button(root, text="Расчитать", font = ('Helvetika', 10, 'bold'), command=popup_window)
 btnProcess.place(x=25, y=250, width=90, height=30)
 
 # Добавление кнопки закрытия программы
