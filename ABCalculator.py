@@ -2,6 +2,7 @@
 
 import tkinter as tk
 from tkinter import messagebox as md
+import os
 
 # Функция закрытия программы
 def du_close():
@@ -21,14 +22,24 @@ def du_processing():
     
     popup_window(n1, c1, n2, c2)
 
+# Функция вызова окна результата
 def popup_window(n1, c1, n2, c2):
     window=tk.Toplevel()
-    window.geometry("280x300")
+    window.geometry("500x500")
     window.title("A/B результат")
+    
+    # Добавление окна вызова текста
+    txtOutput = tk.Text(window, font = ('Courier New', 10, 'bold'))
+    txtOutput.place(x=15, y=115, width=470, height=300)
+    
+    # Добавление заголовка
+    txtOutput.insert(tk.END, '                           Контрольная    Тестовая' + os.linesep)
+    txtOutput.insert(tk.END, '                           группа         группа' + os.linesep)
+    txtOutput.insert(tk.END, '------------------------------------------------------' + os.linesep)
     
     # Добавление кнопки закрытия окна
     btnClosePopup = tk.Button(window, text="Закрыть", font = ('Helvetica', 10, 'bold'),command=window.destroy)
-    btnClosePopup.place(x=160, y=250, width=90, height=30)
+    btnClosePopup.place(x=190, y=450, width=90, height=30)
 
     # Перевод фокуса на созданное окно
     window.focus_force() 
@@ -61,14 +72,14 @@ lblVisitors1.place(x=25, y=80)
 
 entVisitors1 = tk.Entry(font = ('Helvetika', 10, 'bold'), justify='center')
 entVisitors1.place(x=160, y=80, width=90, height=20)
-entVisitors1.insert(tk.END, '0')
+entVisitors1.insert(tk.END, '255')
 
 lblConversions1 = tk.Label(text = "Конверсии:", font = ('Helvetika', 10, 'bold'), fg = '#0066ff')
 lblConversions1.place(x=25, y=110)
 
 entConversions1 = tk.Entry(font = ('Helvetika', 10, 'bold'), justify='center')
 entConversions1.place(x=160, y=110, width=90, height=20)
-entConversions1.insert(tk.END, '0')
+entConversions1.insert(tk.END, '26')
 
 # Добавление метки заголовка тестовой группы
 lblTitle = tk.Label(text = "Тестовая группа", font = ('Helvetika', 12, 'bold'))
@@ -80,14 +91,14 @@ lblVisitors2.place(x=25, y=180)
 
 entVisitors2 = tk.Entry(font = ('Helvetika', 10, 'bold'), justify='center')
 entVisitors2.place(x=160, y=180, width=90, height=20)
-entVisitors2.insert(tk.END, '0')
+entVisitors2.insert(tk.END, '235')
 
 lblConversions2 = tk.Label(text = "Конверсии:", font = ('Helvetika', 10, 'bold'), fg = '#008800')
 lblConversions2.place(x=25, y=210)
 
 entConversions2 = tk.Entry(font = ('Helvetika', 10, 'bold'), justify='center')
 entConversions2.place(x=160, y=210, width=90, height=20)
-entConversions2.insert(tk.END, '0')
+entConversions2.insert(tk.END, '18')
 
 # Добавление кнопки "Расчитать"
 btnProcess = tk.Button(root, text="Расчитать", font = ('Helvetika', 10, 'bold'), command=du_processing)
