@@ -1,6 +1,7 @@
 # А/В калькулятор
 
 import tkinter as tk
+from tkinter import messagebox as md
 
 # Функция закрытия программы
 def du_close():
@@ -13,6 +14,11 @@ def du_processing():
     n2 = int(entVisitors2.get())
     c2 = int(entConversions2.get())
 
+    # Проверка данных из полей ввода
+    if n1<=0 or n2<=0:
+        md.showerror(title="Ошибка", message="Неверное количество посетителей")
+        return
+    
     popup_window(n1, c1, n2, c2)
 
 def popup_window(n1, c1, n2, c2):
