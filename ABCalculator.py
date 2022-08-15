@@ -41,31 +41,35 @@ lblTitle.place(x=60, y=50)
 lblVisitors1 = tk.Label(text = "Посетители:", font = ('Helvetika', 10, 'bold'), fg = '#0066ff')
 lblVisitors1.place(x=25, y=80)
 
-entVisitors1 = tk.Entry(font = ('Helvetika', 10, 'bold'))
+entVisitors1 = tk.Entry(font = ('Helvetika', 10, 'bold'), justify='center')
 entVisitors1.place(x=160, y=80, width=90, height=20)
+entVisitors1.insert(tk.END, '0')
 
-lblVisitors1 = tk.Label(text = "Конверсии:", font = ('Helvetika', 10, 'bold'), fg = '#0066ff')
-lblVisitors1.place(x=25, y=110)
+lblConversions1 = tk.Label(text = "Конверсии:", font = ('Helvetika', 10, 'bold'), fg = '#0066ff')
+lblConversions1.place(x=25, y=110)
 
-entVisitors1 = tk.Entry(font = ('Helvetika', 10, 'bold'))
-entVisitors1.place(x=160, y=110, width=90, height=20)
+entConversions1 = tk.Entry(font = ('Helvetika', 10, 'bold'), justify='center')
+entConversions1.place(x=160, y=110, width=90, height=20)
+entConversions1.insert(tk.END, '0')
 
 # Добавление метки заголовка тестовой группы
 lblTitle = tk.Label(text = "Тестовая группа", font = ('Helvetika', 12, 'bold'))
 lblTitle.place(x=75, y=150)
 
 # Добавление полей ввода тестовой группы
-lblVisitors1 = tk.Label(text = "Посетители:", font = ('Helvetika', 10, 'bold'), fg = '#008800')
-lblVisitors1.place(x=25, y=180)
+lblVisitors2 = tk.Label(text = "Посетители:", font = ('Helvetika', 10, 'bold'), fg = '#008800')
+lblVisitors2.place(x=25, y=180)
 
-entVisitors1 = tk.Entry(font = ('Helvetika', 10, 'bold'))
-entVisitors1.place(x=160, y=180, width=90, height=20)
+entVisitors2 = tk.Entry(font = ('Helvetika', 10, 'bold'), justify='center')
+entVisitors2.place(x=160, y=180, width=90, height=20)
+entVisitors2.insert(tk.END, '0')
 
-lblVisitors1 = tk.Label(text = "Конверсии:", font = ('Helvetika', 10, 'bold'), fg = '#008800')
-lblVisitors1.place(x=25, y=210)
+lblConversions2 = tk.Label(text = "Конверсии:", font = ('Helvetika', 10, 'bold'), fg = '#008800')
+lblConversions2.place(x=25, y=210)
 
-entVisitors1 = tk.Entry(font = ('Helvetika', 10, 'bold'))
-entVisitors1.place(x=160, y=210, width=90, height=20)
+entConversions2 = tk.Entry(font = ('Helvetika', 10, 'bold'), justify='center')
+entConversions2.place(x=160, y=210, width=90, height=20)
+entConversions2.insert(tk.END, '0')
 
 # Добавление кнопки "Расчитать"
 btnProcess = tk.Button(root, text="Расчитать", font = ('Helvetika', 10, 'bold'), command=popup_window)
