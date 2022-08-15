@@ -27,12 +27,12 @@ def du_processing():
     
     popup_window(n1, c1, n2, c2)
 
-# Функция вызова окна результата
 def popup_window(n1, c1, n2, c2):
     window=tk.Toplevel()
     window.geometry("500x500")
     window.title("A/B результат")
     
+
     # Добавление окна вызова текста
     txtOutput = tk.Text(window, font = ('Courier New', 10, 'bold'))
     txtOutput.place(x=15, y=115, width=470, height=300)
@@ -54,9 +54,10 @@ def popup_window(n1, c1, n2, c2):
          + '    ' + num_percent(sigma2) + os.linesep)
     txtOutput.insert(tk.END, '------------------------------------------------------' + os.linesep)
     
+
     # Добавление кнопки закрытия окна
     btnClosePopup = tk.Button(window, text="Закрыть", font = ('Helvetica', 10, 'bold'),command=window.destroy)
-    btnClosePopup.place(x=190, y=450, width=90, height=30)
+    btnClosePopup.place(x=160, y=250, width=90, height=30)
 
     # Перевод фокуса на созданное окно
     window.focus_force() 
@@ -96,7 +97,7 @@ lblConversions1.place(x=25, y=110)
 
 entConversions1 = tk.Entry(font = ('Helvetika', 10, 'bold'), justify='center')
 entConversions1.place(x=160, y=110, width=90, height=20)
-entConversions1.insert(tk.END, '26')
+entConversions1.insert(tk.END, '25')
 
 # Добавление метки заголовка тестовой группы
 lblTitle = tk.Label(text = "Тестовая группа", font = ('Helvetika', 12, 'bold'))
