@@ -126,7 +126,7 @@ def popup_window(n1, c1, n2, c2):
         lblResult95 = tk.Label(window, text = "Нет", font = ('Helvetica', 12, 'bold'), fg ='#ff0000')
         lblResult95.place(x=160, y=25)
     
-    lblComment99 = tk.Label(window, text = "95% уверенность:", font = ('Helvetica', 10, 'bold'))
+    lblComment99 = tk.Label(window, text = "99% уверенность:", font = ('Helvetica', 10, 'bold'))
     lblComment99.place(x=25, y=65)
     
     if confidence_99:
