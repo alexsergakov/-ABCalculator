@@ -4,6 +4,7 @@ import tkinter as tk
 from tkinter import messagebox as md
 import os
 import math
+from scipy.stats import norm
 
 # Функция закрытия программы
 def du_close():
@@ -55,7 +56,7 @@ def popup_window(n1, c1, n2, c2):
     txtOutput.insert(tk.END, '------------------------------------------------------' + os.linesep)
 
     # добавление вывода возможных разбросов
-    z1 =1.96
+    z1 = 1.96
     lower1_95 = p1-z1*sigma1
     if lower1_95 < 0:
         lower1_95 = 0
@@ -77,7 +78,7 @@ def popup_window(n1, c1, n2, c2):
         + '    ' + num_percent(upper2_95) + os.linesep)    
     txtOutput.insert(tk.END, '------------------------------------------------------' + os.linesep)
     
-    z2 =2.575
+    z2 = 2.575
     lower1_99 = p1-z2*sigma1
     if lower1_99 < 0:
         lower1_99 = 0
@@ -98,6 +99,42 @@ def popup_window(n1, c1, n2, c2):
     txtOutput.insert(tk.END, '                   До  ' + num_percent(upper1_99)
         + '    ' + num_percent(upper2_99) + os.linesep)    
     txtOutput.insert(tk.END, '------------------------------------------------------' + os.linesep + os.linesep)
+    
+    # Вычисление Z и P
+    z_score = (p2-p1)/math.sqrt(sigma1*sigma1+sigma2*sigma2)
+    txtOutput.insert(tk.END, 'Z = ' + "{:.7f}".format(z_score) + os.linesep)
+    
+    p_value = norm.sf(x=z_score, loc=0, scale=1)
+    txtOutput.insert(tk.END, 'P = ' + "{:.7f}".format(p_value) + os.linesep)
+    
+    # Добавление оценки результата
+    confidence_95 = False
+    if p_value < 0.025 or p_value > 0.975:
+        confidence_95 = True
+    
+    confidence_99 = False
+    if p_value < 0.005 or p_value > 0.995:
+        confidence_99 = True
+    
+    lblComment95 = tk.Label(window, text = "95% уверенность:", font = ('Helvetica', 10, 'bold'))
+    lblComment95.place(x=25, y=25)
+    
+    if confidence_95:
+        lblResult95 = tk.Label(window, text = "Да", font = ('Helvetica', 12, 'bold'), fg ='#008800')
+        lblResult95.place(x=160, y=25)
+    else:
+        lblResult95 = tk.Label(window, text = "Нет", font = ('Helvetica', 12, 'bold'), fg ='#ff0000')
+        lblResult95.place(x=160, y=25)
+    
+    lblComment99 = tk.Label(window, text = "95% уверенность:", font = ('Helvetica', 10, 'bold'))
+    lblComment99.place(x=25, y=65)
+    
+    if confidence_99:
+        lblResult99 = tk.Label(window, text = "Да", font = ('Helvetica', 12, 'bold'), fg ='#008800')
+        lblResult99.place(x=160, y=65)
+    else:
+        lblResult99 = tk.Label(window, text = "Нет", font = ('Helvetica', 12, 'bold'), fg ='#ff0000')
+        lblResult99.place(x=160, y=65)
     
     # Добавление кнопки закрытия окна
     btnClosePopup = tk.Button(window, text="Закрыть", font = ('Helvetica', 10, 'bold'),command=window.destroy)
@@ -134,14 +171,14 @@ lblVisitors1.place(x=25, y=80)
 
 entVisitors1 = tk.Entry(font = ('Helvetika', 10, 'bold'), justify='center')
 entVisitors1.place(x=160, y=80, width=90, height=20)
-entVisitors1.insert(tk.END, '255')
+entVisitors1.insert(tk.END, '0')
 
 lblConversions1 = tk.Label(text = "Конверсии:", font = ('Helvetika', 10, 'bold'), fg = '#0066ff')
 lblConversions1.place(x=25, y=110)
 
 entConversions1 = tk.Entry(font = ('Helvetika', 10, 'bold'), justify='center')
 entConversions1.place(x=160, y=110, width=90, height=20)
-entConversions1.insert(tk.END, '26')
+entConversions1.insert(tk.END, '0')
 
 # Добавление метки заголовка тестовой группы
 lblTitle = tk.Label(text = "Тестовая группа", font = ('Helvetika', 12, 'bold'))
@@ -153,14 +190,14 @@ lblVisitors2.place(x=25, y=180)
 
 entVisitors2 = tk.Entry(font = ('Helvetika', 10, 'bold'), justify='center')
 entVisitors2.place(x=160, y=180, width=90, height=20)
-entVisitors2.insert(tk.END, '235')
+entVisitors2.insert(tk.END, '0')
 
 lblConversions2 = tk.Label(text = "Конверсии:", font = ('Helvetika', 10, 'bold'), fg = '#008800')
 lblConversions2.place(x=25, y=210)
 
 entConversions2 = tk.Entry(font = ('Helvetika', 10, 'bold'), justify='center')
 entConversions2.place(x=160, y=210, width=90, height=20)
-entConversions2.insert(tk.END, '18')
+entConversions2.insert(tk.END, '0')
 
 # Добавление кнопки "Расчитать"
 btnProcess = tk.Button(root, text="Расчитать", font = ('Helvetika', 10, 'bold'), command=du_processing)
